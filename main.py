@@ -172,7 +172,6 @@ def main() -> None:
 
 
 if (__name__ == '__main__'):
-    print(1)
 
     with open(file_wallets, 'r') as file:
         wallets = [row.split(":")[0].strip() if ":" in row else row.strip() for row in file]
