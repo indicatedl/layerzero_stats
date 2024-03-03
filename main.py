@@ -147,23 +147,28 @@ def get_sort_type() -> str:
 
 
 def main() -> None:
-    art = text2art(text="LAYERZERO  STATS", font="standart")
-    print(colored(art,'light_blue'))
-    art = text2art(text="from NFTCOPILOT.COM", font="cybermedum")
-    print(colored(art,'light_cyan'))
-    print(colored('Автор: t.me/cryptogovnozavod\n','light_cyan'))
+    try:
+        art = text2art(text="LAYERZERO  STATS", font="standart")
+        print(colored(art,'light_blue'))
+        art = text2art(text="from NFTCOPILOT.COM", font="cybermedum")
+        print(colored(art,'light_cyan'))
+        print(colored('Автор: t.me/cryptogovnozavod\n','light_cyan'))
 
-    while True:
-        action = get_action()
+        while True:
+            action = get_action()
 
-        match action:
-            case 'Получить статистику и составить Excel таблицу':
-                sort_type = get_sort_type()
-                worker(sort_type)
-            case 'Выход':
-                exit()
-            case _:
-                pass
+            match action:
+                case 'Получить статистику и составить Excel таблицу':
+                    sort_type = get_sort_type()
+                    worker(sort_type)
+                case 'Выход':
+                    exit()
+                case _:
+                    pass
+    except Exception as e:
+        if 'Inappropriate ioctl for device' in str(e):
+            print(colored('\n\nЗапустите программу в терминале! python3 main.py\n\n','red'))
+
 
 
 if (__name__ == '__main__'):
